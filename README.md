@@ -1,20 +1,26 @@
-# Data-engineering-project
-Workflow Steps
-Extract Data:
+### Concepts
+* [Terraform_overview](../1_terraform_overview.md)
+* [Audio](https://drive.google.com/file/d/1IqMRDwJV-m0v9_le_i2HA_UbM_sIWgWx/view?usp=sharing)
 
-Downloads US traffic accidents data from Kaggle using Kaggle API.
-Transform Data:
+### Execution
 
-Fills missing values, fixes data types, and transforms the data.
-Write Locally:
+```shell
+# Refresh service-account's auth-token for this session
+gcloud auth application-default login
 
-Writes the transformed data to a local Parquet file.
-Upload to GCS:
+# Initialize state file (.tfstate)
+terraform init
 
-Uploads the local Parquet file to Google Cloud Storage.
-Download from GCS:
+# Check changes to new infra plan
+terraform plan -var="project=<your-gcp-project-id>"
+```
 
-Downloads the data from Google Cloud Storage.
-Write to BigQuery:
+```shell
+# Create new infra
+terraform apply -var="project=<your-gcp-project-id>"
+```
 
-Writes the data to BigQuery, replacing the existing table if it exists.
+```shell
+# Delete infra after your work, to avoid costs on any running services
+terraform destroy
+```
