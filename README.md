@@ -23,12 +23,3 @@ Writes the data to BigQuery, replacing the existing table if it exists.
 
 
 
-
-
-
-```
-
-```shell
-# Delete infra after your work, to avoid costs on any running services
-terraform destroy
-```
